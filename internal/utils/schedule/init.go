@@ -24,7 +24,7 @@ func CheckTransactionSchedule() {
 		//TRON
 		startCheckTransaction("TRON")
 		//POLYGON
-		startCheckTransaction("POLYGON")
+		//startCheckTransaction("POLYGON")
 		time.Sleep(checkTransactionInterval)
 	}
 }
