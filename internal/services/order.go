@@ -158,7 +158,7 @@ func ReleaseOrders(toReleaseOrderIDsInput []uuid.UUID) error {
 	for _, toReleaseOrder := range toReleaseOrders {
 		toReleaseWalletIDs = append(toReleaseWalletIDs, toReleaseOrder.WalletID)
 	}
-	fmt.Println(toReleaseWalletIDs)
+
 	if result := tx.Model(&models.Wallet{}).Where("status = 0 and id in ?", toReleaseWalletIDs).Updates(map[string]interface{}{
 		"status": 1,
 	}); result.Error != nil {

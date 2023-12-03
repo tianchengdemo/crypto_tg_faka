@@ -50,7 +50,7 @@ func TokenLogin(c *gin.Context) {
 	//更新cookie
 	c.SetCookie("admin_token", adminToken, 0, "/", "", true, true)
 
-	c.Redirect(http.StatusFound, "/page/admin/")
+	c.Redirect(http.StatusFound, "/page/admin/index.html")
 }
 
 func Logout(c *gin.Context) {

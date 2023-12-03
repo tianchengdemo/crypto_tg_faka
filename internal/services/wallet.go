@@ -33,7 +33,7 @@ func GetFreeDecimalWallet(network string, currency config.Currency, orderPrice d
 
 	// 订单、钱包join查询，1.订单通过对应钱包地址和钱包关联 2.订单为待支付 3.订单的支付价格大于真实价格小于真实价格加上最大尾数，按钱包id分组，获取小于最大订单数的钱包
 	// having 设置每个钱包对应的订单数限制
-	result := db.DB.Debug().Raw(`
+	result := db.DB.Raw(`
 						SELECT wallet.* FROM wallet
 						LEFT JOIN "order" ON wallet.id = "order".wallet_id AND
 							 "order".status = 0 AND
@@ -186,11 +186,11 @@ func UpdateWalletBalanceFromTransfers(wallets []models.Wallet, transfers []model
 	//}
 
 	for _, transfer := range transfers {
-		for _, wallet := range wallets {
+		for i, wallet := range wallets {
 			if wallet.Address != transfer.FromAddress && wallet.Address != transfer.ToAddress {
 				continue
 			}
-			wallet.AddBalance(transfer.Currency, transfer.Price)
+			wallets[i].AddBalance(transfer.Currency, transfer.Price)
 		}
 	}
 

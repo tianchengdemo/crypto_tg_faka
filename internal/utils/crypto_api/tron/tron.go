@@ -354,31 +354,9 @@ func (client *Tron) ValidateAddress(address string) bool {
 	return bytes.Equal(checksum, computedChecksum)
 }
 
-//	func (client *Tron) getLatestBlockNum() (int64, error) {
-//		url := fmt.Sprintf("%s/walletsolidity/getnodeinfo", client.BaseURL)
-//		respByte, err := requests.Get(url, client.RequestsHeader)
-//		if err != nil {
-//			config.LogDebug(fmt.Sprintf("Request Err, Url:%s ,Error: %v", url, err))
-//		}
-//
-//		var result struct {
-//			SolidityBlock string `json:"solidityBlock"`
-//		}
-//		err = json.Unmarshal(respByte, &result)
-//		if err != nil {
-//			return 0, err
-//		}
-//		temp := strings.Split(result.SolidityBlock, ",ID:")[0]
-//		resultString := strings.Replace(temp, "Num:", "", 1)
-//		num, err := strconv.ParseInt(resultString, 10, 64)
-//		if err != nil {
-//			return 0, err
-//		}
-//
-//		return num, nil
-//	}
 func (client *Tron) getLatestBlockNum() (int64, error) {
-	url := fmt.Sprintf("%s/walletsolidity/getblock", client.BaseURL)
+	//url := fmt.Sprintf("%s/walletsolidity/getblock", client.BaseURL)
+	url := fmt.Sprintf("%s/wallet/getblock", client.BaseURL)
 	data := map[string]interface{}{
 		"detail": false,
 	}
@@ -445,8 +423,6 @@ func (client *Tron) GetScheduleTransfers() ([]models.Transfer, error) {
 
 // 块的起终不返回最后一个块，即1-2只返回1
 func (client *Tron) getTransactionsByBlockRange(startBlockNum int64, endBlockNum int64) ([]models.Transfer, error) {
-	//fmt.Println(fmt.Sprintf("Tron block range: %d - %d", startBlockNum, endBlockNum))
-
 	my_log.LogDebug(fmt.Sprintf("Tron block range: %d - %d", startBlockNum, endBlockNum))
 	var transactions []models.Transfer
 
@@ -454,7 +430,8 @@ func (client *Tron) getTransactionsByBlockRange(startBlockNum int64, endBlockNum
 		return transactions, nil
 	}
 
-	url := fmt.Sprintf("%s/walletsolidity/getblockbylimitnext", client.BaseURL)
+	//url := fmt.Sprintf("%s/walletsolidity/getblockbylimitnext", client.BaseURL)
+	url := fmt.Sprintf("%s/wallet/getblockbylimitnext", client.BaseURL)
 	reqData := map[string]interface{}{"startNum": startBlockNum, "endNum": endBlockNum + 1}
 	respByte, err := requests.Post(url, reqData, client.RequestsHeader)
 	if err != nil {

@@ -53,7 +53,6 @@ func ExecuteTemplate(templateName string, data interface{}) string {
 	var buf bytes.Buffer
 	err := templates.ExecuteTemplate(&buf, templateName, data)
 	if err != nil {
-		fmt.Println(err)
 		return "execute tpl err"
 	}
 	return buf.String()
