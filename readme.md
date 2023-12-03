@@ -47,12 +47,18 @@ cmd         # 程序入口
 - 把的程序放到与`.env`、`templates`等同一目录下，直接运行程序
 - 正常启动程序后，使用管理员账号回复机器人`/login`即可生成一次性登录地址（配置文件填写域名后该登录链接便会附带域名）
 
+# 程序运行参数
+    --port 端口号 默认8082
+
 # Nginx反向代理配置(端口写自己的)
     location ~ ^/(api) {
         proxy_pass http://127.0.0.1:8082;
     }
 
-
+# 有问题反馈
+在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+* tg: [@nulllllllll](https://t.me/nulllllllll)
+* 
 ## 灵感来自以下的项目
 
 * [epusdt](https://github.com/assimon/epusdt)
