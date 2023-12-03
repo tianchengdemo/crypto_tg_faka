@@ -17,7 +17,8 @@
 
 
 # DEMO
-https://user-images.githubusercontent.com/119736684/206887487-9ad4ebcc-5883-4f6c-aa59-0d70b1737327.mp4
+https://github.com/yuimoi/crypto_tg_faka/assets/119736684/55ae1db9-f5f5-4cc8-ba2d-b81bffd83a57
+
 
 
 
