@@ -42,7 +42,7 @@ cmd         # 程序入口
 
 
 # 使用方法
-- 后台页面在release压缩包的`wwwroot`中，将该目录下的文件放到nginx网站根目录，并设置反向代理指向程序运行端口
+- 后台页面在[`build`](https://github.com/yuimoi/crypto_tg_faka/releases/tag/release)压缩包的`wwwroot`文件夹里面，将`wwwroot`目录下的文件放到nginx网站根目录，并设置反向代理指向程序运行端口
 - 配置.env下的配置文件`config.ini`
 - 把的程序放到与`.env`、`templates`等同一目录下，直接运行程序
 - 正常启动程序后，使用管理员账号回复机器人`/login`即可生成一次性登录地址（配置文件填写域名后该登录链接便会附带域名）
