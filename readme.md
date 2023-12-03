@@ -42,6 +42,7 @@ cmd         # 程序入口
 
 
 # 使用方法
+- 主程序可以自己clone下来编译，也可以直接下载编译好的版本（linux需要给权限运行`chmod +x ./cmd/crypto_tg_faka.go`）
 - 后台页面在[`build`](https://github.com/yuimoi/crypto_tg_faka/releases/tag/release)压缩包的`wwwroot`文件夹里面，将`wwwroot`目录下的文件放到nginx网站根目录，并设置反向代理指向程序运行端口
 - 配置.env下的配置文件`config.ini`
 - 把的程序放到与`.env`、`templates`等同一目录下，直接运行程序
